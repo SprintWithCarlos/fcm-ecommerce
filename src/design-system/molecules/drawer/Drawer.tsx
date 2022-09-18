@@ -7,7 +7,7 @@ import Icon from "@/design-system/atoms/icon/Icon";
 type DrawerProps = {
   position: string;
   size?: string;
-  content: Record<string, any>[];
+  content: { name: string; url: string }[];
 };
 
 const Drawer: React.FC<DrawerProps> = (props: DrawerProps) => {

@@ -15,32 +15,25 @@ type SidebarProps = {
   }[];
   state: {
     isOpen: boolean;
-    setIsOpen: (boolean) => void;
+    setIsOpen: (arg0: boolean) => void;
   };
 };
 const Sidebar: React.FC<SidebarProps> = (props: SidebarProps) => {
   const { content, state } = props;
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter") {
-      state.setIsOpen(!state.isOpen);
-    }
-  };
   return (
     <div data-testid="sidebar" className="sidebar">
-      <div
+      <button
+        type="button"
         className="close"
         onClick={() => state.setIsOpen(!state.isOpen)}
-        onKeyDown={(e) => handleKeyDown(e)}
-        role="button"
-        tabIndex={-1}
       >
         <Icon
           name="close"
           src={<CloseIcon />}
           size={{ width: "15px", height: "15px" }}
         />
-      </div>
+      </button>
       <ul>
         {content.map((item) => (
           <Link to={item.url} key={item.name}>

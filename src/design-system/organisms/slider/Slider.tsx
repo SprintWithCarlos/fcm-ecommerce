@@ -2,11 +2,16 @@ import "./slider.sass";
 import { useContext, useState } from "react";
 import { ReactComponent as LeftArrow } from "@/assets/icon-previous.svg";
 import { ReactComponent as RightArrow } from "@/assets/icon-next.svg";
+import { ReactComponent as CloseIcon } from "@/assets/icon-close.svg";
 import Icon from "@/design-system/atoms/icon/Icon";
 import { CartContext } from "@/state/cartContext";
+import Modal from "../modal/Modal";
+import Lightbox from "@/design-system/molecules/lightbox/Lightbox";
 
 const Slider: React.FC = () => {
   const { cart } = useContext(CartContext);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const handleForward = () => {
     if (currentSlide === cart.images.full.length - 1) {
@@ -44,11 +49,28 @@ const Slider: React.FC = () => {
 
   return (
     <div data-testid="slider" className="slider">
-      <img src={cart.images.full[currentSlide]} alt="shoe 1" />
+      {isOpen && (
+        <Modal>
+          <Lightbox stateSetter={setIsOpen} images={cart.images} />
+        </Modal>
+      )}
+      <img
+        src={cart.images.full[currentSlide]}
+        className="mobile"
+        alt="shoe 1"
+      />
+      <button type="button" onClick={() => setIsOpen(true)}>
+        <img
+          src={cart.images.full[currentSlide]}
+          className="desktop"
+          alt="shoe 1"
+        />
+      </button>
       <div className="thumb-strip">
         {cart.images.thumbnails.map((item, i) => (
-          <button type="button" onClick={() => setCurrentSlide(i)}>
+          <button type="button" onClick={() => setCurrentSlide(i)} key={item}>
             <img
+              key={item}
               src={item}
               alt={item}
               className={currentSlide === i ? "active" : ""}

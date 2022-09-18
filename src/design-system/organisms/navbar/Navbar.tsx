@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
           </span>
           <span className="menu">
             {content.map((item) => (
-              <NavLink to={item.url} className="menu-item">
+              <NavLink to={item.url} className="menu-item" key={item.url}>
                 {capitalize(item.name)}
               </NavLink>
             ))}

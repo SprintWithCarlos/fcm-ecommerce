@@ -26,28 +26,13 @@ const Product: React.FC = () => {
     images: cart?.images,
     quantity: 0,
   });
-  const handleKeyDownPlus = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      setItem((prev) => ({ ...item, quantity: prev.quantity + 1 }));
-    }
-  };
+
   const handleClickLess = () => {
     if (item.quantity > 0) {
       setItem((prev) => ({ ...item, quantity: prev.quantity - 1 }));
     }
   };
-  const handleKeyDownLess = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      if (item.quantity > 0) {
-        setItem((prev) => ({ ...item, quantity: prev.quantity - 1 }));
-      }
-    }
-  };
-  const handleKeyDownAdd = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      dispatch({ type: "ADD_TO_CART", payload: item });
-    }
-  };
+
   return (
     <div data-testid="product" className="product">
       <div className="brand">Sneaker Company</div>
