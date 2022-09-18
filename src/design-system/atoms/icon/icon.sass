@@ -1,0 +1,27 @@
+@import "../../../style/custom"
+.icon
+  display: block
+  margin: 0 8px
+  display: flex
+  justify-content: center
+  align-items: center
+  position: relative
+
+  svg
+    width: 100%
+  .counter
+    width: 20px
+    height: 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 8px
+    border-radius: 10px
+    background-color: $primary-orange
+    color: #fff
+    position: absolute
+    top: -7px
+    right: -7px
+    font-family: monospace
+    &.first
+      animation: bubbleUp 2s

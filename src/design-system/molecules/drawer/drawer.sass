@@ -1,0 +1,63 @@
+@import '../../../style/custom'
+.drawer
+  height: 15px
+  width: 15px
+
+  // height: 40px
+  // width: 40px
+  // padding: 5px
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+
+  .burger
+    // border-radius: 10px
+    position: relative
+    height: 3px
+    background-color: $dark-gray
+    color: white
+    width: 100%
+    transition: 0.25s all ease-in-out
+    &.isOpen
+      background-color: transparent
+      &::after
+        transform: rotate(-45deg)
+      &::before
+        transform: rotate(45deg)
+    &::after,&::before
+      transition: 0.5s all ease-in-out
+      content: ""
+      // border-radius: 10px
+      height: 3px
+      // background-color: black
+      background-color: $dark-gray
+      position: absolute
+      width: 100%
+      left: 0
+      top: 0
+
+    &::after
+      transform: translateY(6px)
+
+    &::before
+      transform: translateY(-6px)
+
+  .sidebar__container-right
+    position: absolute
+    top: 0
+    transition: all 0.5s ease-in-out
+    width: 250px
+    right: -250px
+    &.isOpen
+      right: 0
+  .sidebar__container-left
+
+    top: 0
+    position: absolute
+    transition: all 0.5s ease-in-out
+    width: 250px
+    left: -250px
+    z-index: 10
+    &.isOpen
+      left: 0

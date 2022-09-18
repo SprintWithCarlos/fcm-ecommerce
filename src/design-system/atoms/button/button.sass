@@ -1,0 +1,36 @@
+// @import '@/style/_custom.sass'
+@import '../../../style/_custom.sass'
+
+.button
+  // font-family: $heading-font
+  display: flex
+  justify-content: center
+  align-items: center
+  border-radius: 8px
+  padding: 0.5rem 0
+  width: 100%
+  font-weight: bold
+  text-align: center
+  text-decoration: none
+  cursor: pointer
+  transition: all 0.2s ease-in-out
+
+  &--primary
+    background-color: $primary-orange
+    color: white
+    min-width: 60px
+
+    font-size: 0.8rem
+    // border: solid 1px $primary-color
+    @media screen and (min-width: $mobile + 1)
+      font-size: 1rem
+      &:hover
+        color: $primary-orange
+        background-color: white
+        border: solid 1px $primary-orange
+
+  &--disabled
+    opacity: 50%
+    &:hover
+      // background-color: transparents
+      cursor: not-allowed

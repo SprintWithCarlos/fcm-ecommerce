@@ -1,0 +1,62 @@
+@use './_animations.sass'
+@use './reset.sass'
+// @use './dark.sass'
+@import 'custom'
+
+body
+  margin: 0
+  font-family: $font
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  font-size: $body-font-size
+  font-family: $font
+  color: $primary-font-color
+h1,h2,h3,h4,h5,h6
+  font-weight: 600
+  margin: 0
+  padding: 0
+  line-height: 1.5
+  color: $primary-font-color
+  a
+    color: $primary-font-color
+    text-decoration: none
+    &:hover
+      // color: $secondary-color
+
+img
+  width: 100%
+  height: auto
+  object-fit: cover
+
+// .container
+//   margin-inline: auto
+//   width: min(100% - 2rem, 600px )
+.container
+  width: 100%
+.column
+  display: flex
+  flex-direction: column
+.row
+  display: flex
+  justify-content: center
+  align-items: center
+  &--right
+    display: flex
+    justify-content: flex-end
+    align-items: flex-end
+.hidden
+  display: none
+table
+  width: auto
+  border-spacing: 16px
+  text-align: left
+// tr, td, th
+//   display: flex
+//   padding: 8px
+thead
+  display: table-header-group
+tbody
+  display: table-row-group
+
+td
+  display: table-cell

@@ -1,0 +1,38 @@
+.avatar
+  position: relative
+  margin-right: 0.5rem
+  img
+    aspect-ratio: 1
+    width: 100%
+    object-fit: cover
+
+  &--round
+    border-radius: 50%
+
+  &--status-online
+    &::after
+      background-color: #00b300
+      position: absolute
+      content: ""
+      display: inline-block
+      width: 12px
+      height: 12px
+      border-radius: 50%
+      border: 2px solid #fff
+      position: absolute
+      top: 0
+      right: 0
+
+  &--status-offline
+    &::after
+      background-color: lightgray
+      position: absolute
+      content: ""
+      display: inline-block
+      width: 12px
+      height: 12px
+      border-radius: 50%
+      border: 2px solid #fff
+      position: absolute
+      top: 0
+      right: 0

@@ -1,0 +1,41 @@
+@import "../../../style/custom"
+nav
+  display: flex
+  position: fixed
+  justify-content: space-between
+  align-items: center
+  height: 50px
+  border-bottom: 0.5px solid rgb(230, 227, 227)
+  z-index: 100
+  background-color: white
+  padding: 0 1rem
+  top: 0
+  width: 100vw
+  .navbar-mobile
+    width: 100%
+    justify-content: space-between
+    height: 50px
+    &>*
+      display: flex
+      align-items: center
+    svg
+      height: 100%
+    .right
+      justify-content: flex-end
+    .left
+      gap: 1rem
+
+    .avatar
+      margin: 0 0 0 0.3rem
+      display: flex
+  // width: -moz-available
+  // width: -webkit-fill-available
+  // width: fill-available
+  &>*
+    display: flex
+    cursor: pointer
+
+  .logo
+    svg
+      width: auto
+      height: 100px

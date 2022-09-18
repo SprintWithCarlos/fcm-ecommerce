@@ -1,0 +1,76 @@
+.sidebar
+  // margin-inline: auto
+  width: min(100% - 2rem, 250px )
+  background-color: white
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  align-items: left
+  border-right: 0.5px solid rgb(230, 227, 227)
+  flex: 1.5
+  padding: 1rem
+  height: 100vh
+  // position: absolute
+  // top: 50px
+  // &>*
+  //   margin-bottom: 1rem
+  .close
+    width: 15px
+  &__row
+    display: flex
+    width: 100%
+  &__section
+    margin: 0 0 1rem 0
+    p
+      margin-bottom: 0.5rem
+  .logo
+    padding: 1rem 2rem
+  hr
+    border-bottom: 0.5px solid rgb(230, 227, 227)
+  li
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    font-weight: bold
+    cursor: pointer
+    line-height: 1.8rem
+    transition: all 0.2s ease-in-out
+    margin-bottom: 0.8rem
+    &:hover
+      background-color: white
+      color: tomato
+      border-radius: 4px
+  p.title
+    font-size: 0.8rem
+    text-transform: uppercase
+    font-weight: bold
+    color: white
+    padding-left: 0.5rem
+  .top
+    margin-bottom: 1rem
+  .center
+    padding: 0 1rem
+  ul
+    display: flex
+    flex-direction: column
+    margin-top: 2rem
+    padding-left: 0.75rem
+  .bottom
+    padding: 1rem
+    button
+      display: inline-block
+      cursor: pointer
+      width: 20px
+      height: 20px
+      border-radius: 4px
+      border: 1px solid white
+      background-color: #fff
+    .dark
+      background-color: #000
+  svg
+    height: 100%
+  a
+    display: flex
+    width: 100%
+    text-decoration: none
+    color: black

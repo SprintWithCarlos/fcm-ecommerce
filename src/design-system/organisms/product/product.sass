@@ -1,0 +1,60 @@
+@import '../../../style/custom'
+.product
+  display: block
+  padding: 1.5rem
+  &>:not(:first-child)
+    margin-bottom: 1rem
+
+  .brand
+    color: $primary-orange
+    text-transform: uppercase
+    font-weight: 600
+    font-size: 0.7rem
+    margin-bottom: 0.5rem
+  h2
+    color: black
+    font-size: 2rem
+    line-height: 2rem
+
+  .row
+    display: flex
+    width: 100%
+    justify-content: space-between
+    align-items: center
+    margin: 1rem 0
+    .block
+      display: flex
+      align-items: center
+      justify-content: space-between
+      width: 50%
+      &__right
+        justify-content: flex-end
+  .price
+    color: black
+    font-size: 1.7rem
+    font-weight: 600
+  .discount
+    background-color: $primary-pale-orange
+    border-radius: 3px
+    font-weight: 600
+    color: $primary-orange
+    padding: 0.2rem 0.4rem
+  .full-price
+    text-decoration: line-through
+  .affordances
+    display: flex
+    background-color: $light-gray
+    border-radius: 5px
+    justify-content: space-between
+    align-items: center
+    padding: 0.5rem 1rem
+    font-family: monospace
+    color: black
+    margin-bottom: 1rem
+    font-weight: 600
+  .affordance
+    color: $primary-orange
+    font-size: 1.5rem
+    cursor: pointer
+    &.disabled
+      cursor: not-allowed

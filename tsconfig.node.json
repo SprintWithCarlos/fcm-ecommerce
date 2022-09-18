@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": ["jest", "vite-plugin-svgr/client"]
+  },
+  "include": ["vite.config.ts"]
+}
