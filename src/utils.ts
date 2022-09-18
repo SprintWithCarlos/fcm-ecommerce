@@ -8,11 +8,7 @@ export const capitalize = (str: string) => {
   return "";
 };
 
-export const filterByRange = (
-  array: any[],
-  start: number,
-  amount: number
-): any[] => {
+export const filterByRange = (array: any[], start: number, amount: number): any[] => {
   if (start > array?.length) {
     return [];
   }
@@ -52,17 +48,13 @@ export const serialize = (obj: any) => {
       obj[key] = value;
     };
     Object.entries(obj).map((entry) =>
-      addToObject(
-        newObject,
-        entry[0].split(" ").join("_").toLowerCase(),
-        entry[1]
-      )
+      addToObject(newObject, entry[0].split(" ").join("_").toLowerCase(), entry[1])
     );
   }
 
   return newObject;
 };
 const formatter = Intl.NumberFormat("en", {
-  notation: "compact",
+  notation: "compact"
 });
 const blabla = formatter.format(19999999);
