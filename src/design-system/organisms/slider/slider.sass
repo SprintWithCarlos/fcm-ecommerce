@@ -1,9 +1,23 @@
+@import "../../../style/custom"
 .slider
   display: block
   position: relative
+  width: 100%
+  @media screen and (min-width: $mobile + 1)
+    padding: 2rem
+    // display: flex
+    // justify-content: center
+
   img
     height: 300px
     object-fit: cover
+    @media screen and (min-width: $mobile + 1)
+      height: auto
+      border-radius: 2rem
+      display: flex
+      align-content: center
+      justify-content: center
+      aspect-ratio: 1/1
   .affordances
     display: flex
     position: absolute
@@ -14,6 +28,8 @@
     transform: translateY(-20px)
     top: 50%
     padding: 0 1rem
+    @media screen and (min-width: $mobile + 1)
+      display: none
   .affordance
     background-color: white
     border-radius: 50%
@@ -23,3 +39,24 @@
     justify-content: center
     align-items: center
     cursor: pointer
+    @media screen and (min-width: $mobile + 1)
+      display: none
+  .thumb-strip
+    display: none
+
+    img
+      width: 80px
+      border-radius: 1rem
+
+      &:hover
+        opacity: 0.8
+        cursor: pointer
+    .active
+      outline: 2px solid $primary-orange
+      opacity: 0.8
+      border-radius: 1rem
+    @media screen and (min-width: $mobile + 1)
+      display: flex
+      max-width: 520px
+      margin-top: 1rem
+      justify-content: space-between

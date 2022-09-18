@@ -1,17 +1,15 @@
 import "./slider.sass";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ReactComponent as LeftArrow } from "@/assets/icon-previous.svg";
 import { ReactComponent as RightArrow } from "@/assets/icon-next.svg";
 import Icon from "@/design-system/atoms/icon/Icon";
+import { CartContext } from "@/state/cartContext";
 
-type SliderProps = {
-  content: string[];
-};
-const Slider: React.FC<SliderProps> = (props: SliderProps) => {
-  const { content } = props;
+const Slider: React.FC = () => {
+  const { cart } = useContext(CartContext);
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const handleForward = () => {
-    if (currentSlide === content.length - 1) {
+    if (currentSlide === cart.images.full.length - 1) {
       setCurrentSlide(0);
     } else {
       setCurrentSlide((prev) => prev + 1);
@@ -20,14 +18,14 @@ const Slider: React.FC<SliderProps> = (props: SliderProps) => {
 
   const handleBack = () => {
     if (currentSlide === 0) {
-      setCurrentSlide(content.length - 1);
+      setCurrentSlide(cart.images.full.length - 1);
     } else {
       setCurrentSlide((prev) => prev - 1);
     }
   };
   const handleKeyPressForward = (e: React.KeyboardEvent<HTMLSpanElement>) => {
     if (e.key === "Enter") {
-      if (currentSlide === content.length) {
+      if (currentSlide === cart.images.full.length) {
         setCurrentSlide(0);
       } else {
         setCurrentSlide((prev) => prev + 1);
@@ -37,7 +35,7 @@ const Slider: React.FC<SliderProps> = (props: SliderProps) => {
   const handleKeyPressBack = (e: React.KeyboardEvent<HTMLSpanElement>) => {
     if (e.key === "Enter") {
       if (currentSlide === 0) {
-        setCurrentSlide(content.length);
+        setCurrentSlide(cart.images.full.length);
       } else {
         setCurrentSlide((prev) => prev - 1);
       }
@@ -46,7 +44,18 @@ const Slider: React.FC<SliderProps> = (props: SliderProps) => {
 
   return (
     <div data-testid="slider" className="slider">
-      <img src={content[currentSlide]} alt="shoe 1" />
+      <img src={cart.images.full[currentSlide]} alt="shoe 1" />
+      <div className="thumb-strip">
+        {cart.images.thumbnails.map((item, i) => (
+          <button type="button" onClick={() => setCurrentSlide(i)}>
+            <img
+              src={item}
+              alt={item}
+              className={currentSlide === i ? "active" : ""}
+            />
+          </button>
+        ))}
+      </div>
       <div className="affordances">
         <span
           className="affordance"

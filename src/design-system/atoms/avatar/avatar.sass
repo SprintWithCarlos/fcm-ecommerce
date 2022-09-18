@@ -1,6 +1,8 @@
+@import "../../../style/custom"
 .avatar
   position: relative
   margin-right: 0.5rem
+
   img
     aspect-ratio: 1
     width: 100%
@@ -8,6 +10,8 @@
 
   &--round
     border-radius: 50%
+    &:hover
+      outline: 2px solid $primary-orange
 
   &--status-online
     &::after

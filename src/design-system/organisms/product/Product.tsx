@@ -7,7 +7,10 @@ import { useContext, useState } from "react";
 import { ReactComponent as CartIcon } from "@/assets/icon-cart.svg";
 import "./product.sass";
 import { CartContext, CartType } from "@/state/cartContext";
+import { ReactComponent as PlusIcon } from "@/assets/icon-plus.svg";
+import { ReactComponent as MinusIcon } from "@/assets/icon-minus.svg";
 import Button, { ButtonClass } from "@/design-system/atoms/button/Button";
+import Icon from "@/design-system/atoms/icon/Icon";
 
 const Product: React.FC = () => {
   const { dispatch, cart } = useContext(CartContext);
@@ -59,41 +62,47 @@ const Product: React.FC = () => {
           <span className="full-price">{`$${item.fullPrice}.00`}</span>
         </div>
       </div>
-      <div className="affordances">
-        <span
-          className={item.quantity > 0 ? "affordance" : "affordance disabled"}
-          onClick={() => handleClickLess()}
-          onKeyDown={(e) => handleKeyDownLess(e)}
-          role="button"
-          tabIndex={-1}
-        >
-          -
-        </span>
+      <div className="row-mflex-dblock">
+        <div className="affordances">
+          <button
+            className={item.quantity > 0 ? "affordance" : "affordance disabled"}
+            onClick={() => handleClickLess()}
+            type="button"
+          >
+            <Icon
+              src={<MinusIcon />}
+              name="minus"
+              size={{ width: "10px", height: "10px" }}
+            />
+          </button>
 
-        <span>{item.quantity}</span>
-        <span
-          onClick={() =>
-            setItem((prev) => ({ ...item, quantity: prev.quantity + 1 }))
-          }
-          className="affordance"
-          onKeyDown={(e) => handleKeyDownPlus(e)}
-          role="button"
-          tabIndex={-1}
+          <span>{item.quantity}</span>
+          <button
+            onClick={() =>
+              setItem((prev) => ({ ...item, quantity: prev.quantity + 1 }))
+            }
+            className="affordance"
+            type="button"
+          >
+            <Icon
+              src={<PlusIcon />}
+              size={{ width: "10px", height: "10px" }}
+              name="plus"
+            />
+          </button>
+        </div>
+
+        <Button
+          type={ButtonClass.primary}
+          disabled={item.quantity === 0}
+          onClick={() => dispatch({ type: "ADD_TO_CART", payload: item })}
         >
-          +
-        </span>
+          <span className="icon">
+            <CartIcon />
+          </span>{" "}
+          Add to Cart
+        </Button>
       </div>
-
-      <Button
-        type={ButtonClass.primary}
-        disabled={item.quantity === 0}
-        onClick={() => dispatch({ type: "ADD_TO_CART", payload: item })}
-      >
-        <span className="icon">
-          <CartIcon />
-        </span>{" "}
-        Add to Cart
-      </Button>
     </div>
   );
 };

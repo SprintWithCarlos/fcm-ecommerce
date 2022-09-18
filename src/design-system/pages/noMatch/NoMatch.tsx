@@ -11,8 +11,8 @@ const NoMatch: React.FC = () => {
       <Navbar />
       <div className="wrapper">
         <p>
-          There is no content matching this link. Go back to
-          <Link to="/"> home</Link>
+          There is no content matching this link. Go back to{" "}
+          <Link to="/">home</Link>
         </p>
       </div>
     </div>
