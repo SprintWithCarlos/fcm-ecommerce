@@ -26,11 +26,7 @@ describe("Mobile", () => {
         expect(text).to.match(/Your cart is empty/);
       });
     // Check add to cart button initial state (disabled)
-    cy.get('[data-testid="button"]').should(
-      "have.attr",
-      "disabled",
-      "disabled"
-    );
+    cy.get('[data-testid="button"]').should("have.attr", "disabled", "disabled");
     // cy.get('[data-testid="openCartMobile"]').click();
     // Add to cart
     cy.get('[data-testid="add"]').click();
@@ -69,9 +65,7 @@ describe("Mobile", () => {
       }
 
       if (item === 4) {
-        return cy
-          .get('[data-testid="mobile"]')
-          .should("have.attr", "src", `/image-product-1.jpg`);
+        return cy.get('[data-testid="mobile"]').should("have.attr", "src", `/image-product-1.jpg`);
       }
     });
     // Check slider backwards
@@ -84,9 +78,7 @@ describe("Mobile", () => {
       }
 
       if (item === 0) {
-        return cy
-          .get('[data-testid="mobile"]')
-          .should("have.attr", "src", `/image-product-4.jpg`);
+        return cy.get('[data-testid="mobile"]').should("have.attr", "src", `/image-product-4.jpg`);
       }
     });
   });
