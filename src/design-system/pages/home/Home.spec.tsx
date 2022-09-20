@@ -45,7 +45,6 @@ describe("Home", () => {
     );
     expect(getByTestId(/add/i)).toBeInTheDocument();
     expect(getByTestId(/quantity/i)).toBeInTheDocument();
-    expect(getByTestId(/span/i)).toBeInTheDocument();
     const addButton = getByTestId(/add/i);
     fireEvent.click(addButton);
     fireEvent.click(addButton);
@@ -55,7 +54,6 @@ describe("Home", () => {
 
     expect(addToCartButton).toBeInTheDocument();
     fireEvent.click(addToCartButton);
-    expect(getByTestId(/span/i)).toHaveTextContent("3");
 
     screen.getAllByTestId(/cart-desktop/i).map((item) => {
       expect(item).toBeInTheDocument();
