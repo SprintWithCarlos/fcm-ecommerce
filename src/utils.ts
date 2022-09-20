@@ -1,60 +1,28 @@
 /* eslint-disable function-paren-newline */
 /* eslint-disable implicit-arrow-linebreak */
 
-export const capitalize = (str: string) => {
-  if (str) {
+export const capitalize = (str: any) => {
+  if (str && typeof str === "string") {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
   return "";
 };
 
-export const filterByRange = (array: any[], start: number, amount: number): any[] => {
-  if (start > array?.length) {
-    return [];
-  }
-  if (amount > array?.length) {
-    return array?.slice(start);
-  }
-  if (start + amount > array?.length) {
-    return array?.slice(start, array?.length);
-  }
-  if (start < 0) {
-    return array?.slice(0, amount);
-  }
-  if (amount < 0) {
-    return array?.slice(start, array.length + amount);
-  }
-  if (start + amount < 0) {
-    return array?.slice(0, array.length + amount);
-  }
-  return array?.slice(start, start + amount);
-};
-
-export const paginator = (length: number, amount: number) => {
-  if (length) {
-    const pages = Math.floor(length / amount);
-    const array = [...Array(pages + 1).keys()].map((i) => i + 1);
-    return array;
-  }
-  return [];
-};
-const result = paginator(87, 10);
-result;
-
-export const serialize = (obj: any) => {
-  const newObject = {};
-  if (obj) {
-    const addToObject = (obj: Record<string, any>, key: string, value: any) => {
-      obj[key] = value;
-    };
-    Object.entries(obj).map((entry) =>
-      addToObject(newObject, entry[0].split(" ").join("_").toLowerCase(), entry[1])
-    );
+export const formatter = (currency: string, amount: string | number) => {
+  let cleanedAmount: number;
+  const hasDecimal = amount.toString().slice(-3).charAt(0).match(/,|\./gm);
+  const transform = amount.toString().replace(/[^a-zA-Z0-9 ]/g, "");
+  if (hasDecimal) {
+    cleanedAmount = parseInt(transform, 10) / 100;
+  } else {
+    cleanedAmount = parseInt(transform, 10);
   }
 
-  return newObject;
+  const result = Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency,
+  }).format(cleanedAmount);
+  return result;
 };
-const formatter = Intl.NumberFormat("en", {
-  notation: "compact"
-});
-const blabla = formatter.format(19999999);
+const test1 = formatter("GBP", "125,00");
+test1;

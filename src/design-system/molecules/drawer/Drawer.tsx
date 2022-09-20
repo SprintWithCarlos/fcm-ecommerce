@@ -13,26 +13,19 @@ type DrawerProps = {
 const Drawer: React.FC<DrawerProps> = (props: DrawerProps) => {
   const { content, position, size } = props;
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Enter") {
-      setIsOpen(!isOpen);
-    }
-  };
 
   return (
-    <div
-      data-testid="drawer"
-      className="drawer"
-      onClick={() => setIsOpen(!isOpen)}
-      onKeyDown={(e) => handleKeyDown(e)}
-      role="button"
-      tabIndex={-1}
-    >
-      <span className="menu">
-        {" "}
+    <div data-testid="drawer" className="drawer">
+      <button
+        type="button"
+        className="menu"
+        onClick={() => setIsOpen(!isOpen)}
+        data-testid="menu"
+      >
         <Icon name="burger" src={<BurgerIcon />} />
-      </span>
+      </button>
       <div
+        data-testid="container"
         className={
           isOpen
             ? `sidebar__container-${position} isOpen`

@@ -11,4 +11,3 @@ describe("CartModal", () => {
     expect(cartModalComponent).toBeInTheDocument();
   });
 });
-

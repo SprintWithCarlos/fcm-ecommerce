@@ -21,7 +21,7 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
   const { src, name, size, counter, colors, rounded } = props;
   return (
     <div
-      data-testid="icon"
+      data-testid={name}
       className="icon"
       style={{
         height: `${size?.height ?? "20px"}`,
@@ -35,7 +35,11 @@ const Icon: React.FC<IconProps> = (props: IconProps) => {
       {/* {React.createElement(src, null)} */}
       {/* <Image /> */}
       {src}
-      {counter && counter > 0 && <p className="counter first">{counter}</p>}
+      {counter && counter > 0 && (
+        <span data-testid={name} className="counter first">
+          {counter}
+        </span>
+      )}
     </div>
   );
 };

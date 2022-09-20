@@ -1,3 +1,4 @@
+/* eslint-disable import/no-mutable-exports */
 import { createContext, useMemo, useReducer, Dispatch } from "react";
 import { contextReducer } from "./cartReducer";
 
@@ -33,7 +34,7 @@ const initialState: { cart: CartType } = {
 };
 type CartContextType = {
   cart: CartType;
-  dispatch: Dispatch<any>;
+  dispatch: Function;
 };
 const initialContext: CartContextType = {
   cart: {
@@ -53,12 +54,10 @@ const initialContext: CartContextType = {
 };
 
 export const CartContext = createContext(initialContext);
-
+let contextDispatch: Function;
 export const CartContextProvider = ({ children }: { children: any }) => {
-  const [state, dispatch] = useReducer(contextReducer, initialState) as [
-    state: { cart: CartType },
-    dispatch: Dispatch<{ type: string; payload: CartType }>
-  ];
+  const [state, dispatch] = useReducer(contextReducer, initialState);
+
   return (
     <CartContext.Provider
       value={useMemo(
@@ -82,3 +81,4 @@ export const CartContextProvider = ({ children }: { children: any }) => {
     </CartContext.Provider>
   );
 };
+export { contextDispatch };

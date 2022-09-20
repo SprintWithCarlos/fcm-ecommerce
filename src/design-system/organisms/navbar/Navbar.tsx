@@ -15,6 +15,7 @@ import { capitalize } from "@/utils";
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { cart } = useContext(CartContext);
+
   const content = [
     { name: "collections", url: "/collections" },
     { name: "men", url: "/men" },
@@ -36,13 +37,14 @@ const Navbar: React.FC = () => {
         <div className="right">
           <button
             type="button"
+            data-testid="openCartMobile"
             onClick={() => {
               setIsOpen(!isOpen);
             }}
           >
             <Icon
               counter={cart.quantity > 0 ? cart.quantity : undefined}
-              name="cart"
+              name="cart-mobile"
               src={<CartIcon />}
               size={{ height: "auto", width: "22px" }}
             />
@@ -76,13 +78,14 @@ const Navbar: React.FC = () => {
         <span className="right">
           <button
             type="button"
+            data-testid="openCartDesktop"
             onClick={() => {
               setIsOpen(!isOpen);
             }}
           >
             <Icon
               counter={cart.quantity > 0 ? cart.quantity : undefined}
-              name="cart"
+              name="cart-desktop"
               src={<CartIcon />}
               size={{ height: "auto", width: "22px" }}
             />

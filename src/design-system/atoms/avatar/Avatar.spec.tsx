@@ -1,20 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import store from "@/state/store";
-import Avatar from "./Avatar";
+import Avatar, { StatusOptions } from "./Avatar";
 
 const imgUrl = "https://source.unsplash.com/collection/9719230/300x300";
 
 describe("Avatar", () => {
-  beforeAll(() => {
-    render(
-      <Provider store={store}>
-        <Avatar alt="avatar" src={imgUrl} />
-      </Provider>
-    );
+  test("renders Avatar", async () => {
+    render(<Avatar alt="avatar" src={imgUrl} />);
+    const avatarComponent = screen.queryByTestId(/avatar/i);
+    expect(avatarComponent).toBeInTheDocument();
   });
-
-  test("renders ", async () => {
+  test("renders Avatar with status", async () => {
+    render(<Avatar alt="avatar" src={imgUrl} status={StatusOptions.offline} />);
     const avatarComponent = screen.queryByTestId(/avatar/i);
     expect(avatarComponent).toBeInTheDocument();
   });

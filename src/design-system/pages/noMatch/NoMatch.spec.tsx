@@ -1,9 +1,12 @@
 import { render, screen } from "@testing-library/react";
+
+import { BrowserRouter } from "react-router-dom";
+
 import NoMatch from "./NoMatch";
 
 describe("NoMatch", () => {
   beforeEach(() => {
-    render(<NoMatch />);
+    render(<NoMatch />, { wrapper: BrowserRouter });
   });
 
   test("renders ", async () => {

@@ -3,12 +3,15 @@ import Icon from "./Icon";
 import { ReactComponent as UpIcon } from "@/design-system/atoms/icons/up.svg";
 
 describe("Icon", () => {
-  beforeAll(() => {
+  test("renders Icon ", async () => {
     render(<Icon src={<UpIcon />} name="up" />);
-  });
-
-  test("renders ", async () => {
-    const iconComponent = screen.queryByTestId(/icon/i);
+    const iconComponent = screen.queryByTestId(/up/i);
     expect(iconComponent).toBeInTheDocument();
+  });
+  test("renders Icon rounder", async () => {
+    render(<Icon src={<UpIcon />} name="up" rounded />);
+    const iconComponent = screen.queryByTestId(/up/i);
+    expect(iconComponent).toBeInTheDocument();
+    expect(iconComponent?.style.borderRadius).toBe("50%");
   });
 });

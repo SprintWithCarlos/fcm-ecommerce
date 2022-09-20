@@ -30,9 +30,6 @@ export const contextReducer = (
           },
         },
       };
-    case "TEST":
-      console.log("test");
-      return state;
 
     default:
       return state;

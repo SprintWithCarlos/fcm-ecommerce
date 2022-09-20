@@ -50,6 +50,7 @@ const Product: React.FC = () => {
       <div className="row-mflex-dblock">
         <div className="affordances">
           <button
+            data-testid="less"
             className={item.quantity > 0 ? "affordance" : "affordance disabled"}
             onClick={() => handleClickLess()}
             type="button"
@@ -61,13 +62,14 @@ const Product: React.FC = () => {
             />
           </button>
 
-          <span>{item.quantity}</span>
+          <span data-testid="quantity">{item.quantity}</span>
           <button
             onClick={() =>
               setItem((prev) => ({ ...item, quantity: prev.quantity + 1 }))
             }
             className="affordance"
             type="button"
+            data-testid="add"
           >
             <Icon
               src={<PlusIcon />}
@@ -80,7 +82,9 @@ const Product: React.FC = () => {
         <Button
           type={ButtonClass.primary}
           disabled={item.quantity === 0}
-          onClick={() => dispatch({ type: "ADD_TO_CART", payload: item })}
+          onClick={() => {
+            dispatch({ type: "ADD_TO_CART", payload: item });
+          }}
         >
           <span className="icon">
             <CartIcon />

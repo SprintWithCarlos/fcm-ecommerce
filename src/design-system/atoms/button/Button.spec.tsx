@@ -1,15 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import store from "@/state/store";
 import Button, { ButtonClass } from "./Button";
 
 describe("Button", () => {
   beforeAll(() => {
-    render(
-      <Provider store={store}>
-        <Button text="Send" type={ButtonClass.primary} />
-      </Provider>
-    );
+    render(<Button type={ButtonClass.primary}>Send</Button>);
   });
 
   test("renders ", async () => {

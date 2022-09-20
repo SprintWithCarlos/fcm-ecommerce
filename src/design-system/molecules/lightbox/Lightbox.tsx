@@ -33,21 +33,27 @@ const Lightbox: React.FC<LightboxProps> = (props: LightboxProps) => {
         <div className="row">
           <button
             className="close"
+            data-testid="close"
             type="button"
             onClick={() => {
               setIsOpen(false);
             }}
           >
-            <Icon name="close" src={<CloseIcon />} />
+            <Icon name="icon-cl" src={<CloseIcon />} />
           </button>
         </div>
         <div className="row">
-          <img src={images.full[currentSlide]} alt="shoe 1" />
+          <img
+            data-testid="image"
+            src={images.full[currentSlide]}
+            alt="shoe 1"
+          />
         </div>
         <div className="affordances">
           <button
             type="button"
             className="affordance"
+            data-testid="back"
             onClick={() => handleBack()}
           >
             <Icon
@@ -60,6 +66,7 @@ const Lightbox: React.FC<LightboxProps> = (props: LightboxProps) => {
             className="affordance"
             onClick={() => handleForward()}
             type="button"
+            data-testid="next"
           >
             <Icon
               src={<RightArrow />}
@@ -70,8 +77,14 @@ const Lightbox: React.FC<LightboxProps> = (props: LightboxProps) => {
         </div>
         <div className="thumb-strip">
           {images.thumbnails.map((item, i) => (
-            <button type="button" onClick={() => setCurrentSlide(i)} key={item}>
+            <button
+              type="button"
+              onClick={() => setCurrentSlide(i)}
+              key={item}
+              data-testid="setCurrent"
+            >
               <img
+                data-testid="thumbnail"
                 key={item}
                 src={item}
                 alt={item}

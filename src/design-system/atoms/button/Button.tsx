@@ -20,22 +20,21 @@ type ButtonProps = {
 };
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   const { type, onClick, children, disabled } = props;
-
   return (
-    <div data-testid="button" className="button">
-      <button
-        type="button"
-        className={
-          !disabled
-            ? `button button--${type}`
-            : `button button--${type} button--disabled`
-        }
-        onClick={onClick}
-        disabled={disabled}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      data-testid="button"
+      name="button"
+      type="button"
+      className={
+        !disabled
+          ? `button button--${type}`
+          : `button button--${type} button--disabled`
+      }
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   );
 };
 export default Button;

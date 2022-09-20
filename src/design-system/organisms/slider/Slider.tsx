@@ -28,24 +28,6 @@ const Slider: React.FC = () => {
       setCurrentSlide((prev) => prev - 1);
     }
   };
-  const handleKeyPressForward = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      if (currentSlide === cart.images.full.length) {
-        setCurrentSlide(0);
-      } else {
-        setCurrentSlide((prev) => prev + 1);
-      }
-    }
-  };
-  const handleKeyPressBack = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      if (currentSlide === 0) {
-        setCurrentSlide(cart.images.full.length);
-      } else {
-        setCurrentSlide((prev) => prev - 1);
-      }
-    }
-  };
 
   return (
     <div data-testid="slider" className="slider">
@@ -58,18 +40,26 @@ const Slider: React.FC = () => {
         src={cart.images.full[currentSlide]}
         className="mobile"
         alt="shoe 1"
+        data-testid="mobile"
       />
-      <button type="button" onClick={() => setIsOpen(true)}>
+      <button data-testid="image" type="button" onClick={() => setIsOpen(true)}>
         <img
           src={cart.images.full[currentSlide]}
           className="desktop"
           alt="shoe 1"
+          data-testid="img"
         />
       </button>
       <div className="thumb-strip">
         {cart.images.thumbnails.map((item, i) => (
-          <button type="button" onClick={() => setCurrentSlide(i)} key={item}>
+          <button
+            type="button"
+            onClick={() => setCurrentSlide(i)}
+            key={item}
+            data-testid="setCurrent"
+          >
             <img
+              data-testid="thumbnail"
               key={item}
               src={item}
               alt={item}
@@ -79,32 +69,30 @@ const Slider: React.FC = () => {
         ))}
       </div>
       <div className="affordances">
-        <span
+        <button
+          type="button"
           className="affordance"
-          role="button"
-          tabIndex={-1}
           onClick={() => handleBack()}
-          onKeyDown={(e) => handleKeyPressBack(e)}
+          data-testid="back"
         >
           <Icon
             src={<LeftArrow />}
             name="leftArrow"
             size={{ width: "auto", height: "20px" }}
           />
-        </span>
-        <span
+        </button>
+        <button
           className="affordance"
           onClick={() => handleForward()}
-          onKeyDown={(e) => handleKeyPressForward(e)}
-          role="button"
-          tabIndex={-1}
+          type="button"
+          data-testid="next"
         >
           <Icon
             src={<RightArrow />}
             name="rightArrow"
             size={{ width: "auto", height: "20px" }}
           />
-        </span>
+        </button>
       </div>
     </div>
   );

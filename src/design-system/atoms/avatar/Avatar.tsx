@@ -1,5 +1,9 @@
 import "./avatar.sass";
 
+export enum StatusOptions {
+  online = "online",
+  offline = "offlines",
+}
 type AvatarProps = {
   src: string;
   alt: string;
@@ -8,7 +12,7 @@ type AvatarProps = {
     height?: string;
   };
   className?: string;
-  status?: string;
+  status?: StatusOptions;
 };
 const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   const { src, alt, size, className, status } = props;

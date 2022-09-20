@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import { useContext } from "react";
 import { CartContext } from "@/state/cartContext";
 import "./cartModal.sass";
@@ -32,6 +33,7 @@ const CartModal: React.FC = () => {
               </div>
               <button
                 type="button"
+                data-testid="trash"
                 onClick={() => dispatch({ type: "RESET_CART" })}
               >
                 <Icon src={<DeleteIcon />} name="delete" />

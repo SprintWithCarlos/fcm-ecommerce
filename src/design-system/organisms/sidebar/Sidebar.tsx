@@ -1,9 +1,6 @@
 /* eslint-disable implicit-arrow-linebreak */
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import Icon from "@/design-system/atoms/icon/Icon";
-import { Theme, ThemeContext } from "@/state/context";
 import { capitalize } from "@/utils";
 import { ReactComponent as CloseIcon } from "@/assets/icon-close.svg";
 import "./sidebar.sass";
@@ -25,6 +22,7 @@ const Sidebar: React.FC<SidebarProps> = (props: SidebarProps) => {
     <div data-testid="sidebar" className="sidebar">
       <button
         type="button"
+        data-testid="draw-c"
         className="close"
         onClick={() => state.setIsOpen(!state.isOpen)}
       >
