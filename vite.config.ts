@@ -7,14 +7,14 @@ export default defineConfig({
   plugins: [
     svgr({
       svgrOptions: {
-        icon: true,
-      },
+        icon: true
+      }
     }),
-    react(),
+    react()
   ],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
-    },
-  },
+      "@": resolve(__dirname, "./src")
+    }
+  }
 });
