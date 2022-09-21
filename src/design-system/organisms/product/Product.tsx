@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable operator-linebreak */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/no-unescaped-entities */
@@ -23,7 +25,10 @@ const Product: React.FC = () => {
     price: 125,
     discount: 50,
     fullPrice: 250,
-    images: cart.images ? cart.images : { full: [], thumbnails: [] },
+    images: cart.images
+      ? cart.images
+      : /* istanbul ignore next */
+        { full: [], thumbnails: [] },
     quantity: 0,
   });
 

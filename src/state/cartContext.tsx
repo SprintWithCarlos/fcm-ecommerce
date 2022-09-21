@@ -54,7 +54,7 @@ const initialContext: CartContextType = {
     },
   },
   /* istanbul ignore next */
-  dispatch: () => {},
+  dispatch() {},
 };
 
 export const CartContext = createContext(initialContext);

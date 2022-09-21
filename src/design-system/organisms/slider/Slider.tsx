@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable indent */
 import "./slider.sass";
 import { useContext, useState } from "react";
 import { ReactComponent as LeftArrow } from "@/assets/icon-previous.svg";
@@ -35,7 +37,12 @@ const Slider: React.FC = () => {
         <Modal>
           <Lightbox
             stateSetter={setIsOpen}
-            images={cart.images ? cart.images : { full: [], thumbnails: [] }}
+            images={
+              cart.images
+                ? cart.images
+                : /* istanbul ignore next */
+                  { full: [], thumbnails: [] }
+            }
           />
         </Modal>
       )}
