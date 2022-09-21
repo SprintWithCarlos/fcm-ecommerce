@@ -6,6 +6,21 @@ import {
 } from "@testing-library/react";
 import Lightbox from "./Lightbox";
 
+describe("Lightbox with no images", () => {
+  test("renders ", async () => {
+    render(
+      <Lightbox
+        stateSetter={() => {}}
+        images={{
+          full: [],
+          thumbnails: [],
+        }}
+      />
+    );
+    const lightboxComponent = screen.queryByTestId(/lightbox/i);
+    expect(lightboxComponent).toBeInTheDocument();
+  });
+});
 describe("Lightbox", () => {
   beforeEach(() => {
     render(

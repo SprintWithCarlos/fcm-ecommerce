@@ -43,7 +43,9 @@ const Navbar: React.FC = () => {
             }}
           >
             <Icon
-              counter={cart.quantity > 0 ? cart.quantity : undefined}
+              counter={
+                cart.quantity && cart.quantity > 0 ? cart.quantity : undefined
+              }
               name="cart-mobile"
               src={<CartIcon />}
               size={{ height: "auto", width: "22px" }}
@@ -84,7 +86,9 @@ const Navbar: React.FC = () => {
             }}
           >
             <Icon
-              counter={cart.quantity > 0 ? cart.quantity : undefined}
+              counter={
+                cart.quantity && cart.quantity > 0 ? cart.quantity : undefined
+              }
               name="cart-desktop"
               src={<CartIcon />}
               size={{ height: "auto", width: "22px" }}

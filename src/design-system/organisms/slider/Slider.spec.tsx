@@ -3,6 +3,34 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { CartContext } from "@/state/cartContext";
 import Slider from "./Slider";
 
+describe("Slider with no images", () => {
+  test("renders ", async () => {
+    render(
+      <CartContext.Provider
+        value={{
+          cart: {
+            name: "",
+            description: "",
+            discount: 0,
+            fullPrice: 0,
+            images: {
+              full: [],
+              thumbnails: [],
+            },
+            price: 0,
+            quantity: 0,
+            total: 0,
+          },
+          dispatch: () => {},
+        }}
+      >
+        <Slider />
+      </CartContext.Provider>
+    );
+    const sliderComponent = screen.queryByTestId(/slider/i);
+    expect(sliderComponent).toBeInTheDocument();
+  });
+});
 describe("Slider", () => {
   beforeEach(() => {
     render(

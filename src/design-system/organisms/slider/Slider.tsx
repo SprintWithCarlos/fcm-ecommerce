@@ -14,7 +14,7 @@ const Slider: React.FC = () => {
 
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const handleForward = () => {
-    if (currentSlide === cart.images.full.length - 1) {
+    if (cart.images && currentSlide === cart.images.full.length - 1) {
       setCurrentSlide(0);
     } else {
       setCurrentSlide((prev) => prev + 1);
@@ -22,7 +22,7 @@ const Slider: React.FC = () => {
   };
 
   const handleBack = () => {
-    if (currentSlide === 0) {
+    if (cart.images && currentSlide === 0) {
       setCurrentSlide(cart.images.full.length - 1);
     } else {
       setCurrentSlide((prev) => prev - 1);
@@ -33,25 +33,25 @@ const Slider: React.FC = () => {
     <div data-testid="slider" className="slider">
       {isOpen && (
         <Modal>
-          <Lightbox stateSetter={setIsOpen} images={cart.images} />
+          <Lightbox stateSetter={setIsOpen} images={cart.images!} />
         </Modal>
       )}
       <img
-        src={cart.images.full[currentSlide]}
+        src={cart.images?.full[currentSlide]}
         className="mobile"
         alt="shoe 1"
         data-testid="mobile"
       />
       <button data-testid="image" type="button" onClick={() => setIsOpen(true)}>
         <img
-          src={cart.images.full[currentSlide]}
+          src={cart.images?.full[currentSlide]}
           className="desktop"
           alt="shoe 1"
           data-testid="img"
         />
       </button>
       <div className="thumb-strip">
-        {cart.images.thumbnails.map((item, i) => (
+        {cart.images?.thumbnails.map((item, i) => (
           <button
             type="button"
             onClick={() => setCurrentSlide(i)}

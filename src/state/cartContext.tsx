@@ -15,7 +15,10 @@ export type CartType = {
     thumbnails: string[];
   };
 };
-const initialState: { cart: CartType } = {
+export type State = {
+  cart: Partial<CartType>;
+};
+const initialState: State = {
   cart: {
     name: "",
     price: 0,
@@ -33,7 +36,7 @@ const initialState: { cart: CartType } = {
   },
 };
 type CartContextType = {
-  cart: CartType;
+  cart: Partial<CartType>;
   dispatch: Function;
 };
 const initialContext: CartContextType = {
@@ -50,6 +53,7 @@ const initialContext: CartContextType = {
       thumbnails: [],
     },
   },
+  /* istanbul ignore next */
   dispatch: () => {},
 };
 

@@ -18,7 +18,7 @@ const CartModal: React.FC = () => {
         ) : (
           <>
             <div className="line">
-              <img src={cart.images.thumbnails[0]} alt="shoe" />
+              <img src={cart.images?.thumbnails[0]} alt="shoe" />
               <div className="item">
                 <p className="title">{cart.name}</p>
                 <p>

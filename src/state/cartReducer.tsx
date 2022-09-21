@@ -1,8 +1,14 @@
-import { CartType } from "./cartContext";
+/* eslint-disable consistent-return */
+/* eslint-disable default-case */
+import { Reducer } from "react";
+import { State } from "./cartContext";
 
-export const contextReducer = (
-  state: { cart: CartType },
-  action: { type: string; payload: CartType | any }
+type CartAction =
+  | { type: "ADD_TO_CART"; payload: { price: number; quantity: number } }
+  | { type: "RESET_CART" };
+export const contextReducer: Reducer<State, CartAction> = (
+  state: State,
+  action: CartAction
 ) => {
   switch (action.type) {
     case "ADD_TO_CART":
@@ -30,8 +36,5 @@ export const contextReducer = (
           },
         },
       };
-
-    default:
-      return state;
   }
 };
