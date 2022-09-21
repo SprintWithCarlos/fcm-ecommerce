@@ -23,7 +23,7 @@ const Product: React.FC = () => {
     price: 125,
     discount: 50,
     fullPrice: 250,
-    images: cart.images!,
+    images: cart.images ? cart.images : { full: [], thumbnails: [] },
     quantity: 0,
   });
 

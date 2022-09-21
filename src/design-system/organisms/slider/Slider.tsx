@@ -33,7 +33,10 @@ const Slider: React.FC = () => {
     <div data-testid="slider" className="slider">
       {isOpen && (
         <Modal>
-          <Lightbox stateSetter={setIsOpen} images={cart.images!} />
+          <Lightbox
+            stateSetter={setIsOpen}
+            images={cart.images ? cart.images : { full: [], thumbnails: [] }}
+          />
         </Modal>
       )}
       <img
